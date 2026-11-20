@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NCV Level 4 Robotics | Basic Python Lists</title>
+<style>
+:root{--navy:#25145f;--blue:#4169e1;--gold:#b9a4ff;--ink:#20223b;--muted:#686b8a;--line:#dcdaf2;--bg:#f3f2ff;--card:#fff;--green:#16834b;--greenbg:#e8f7ee;--red:#bd2d42;--redbg:#fff0f1;--pale:#eeedff;--mono:Consolas,"Courier New",monospace}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 "Segoe UI",Arial,sans-serif}button{font:inherit;cursor:pointer}code,pre,.mono{font-family:var(--mono)}code{background:#eaf1f8;padding:2px 5px;border-radius:5px;color:#123e69}#top{position:sticky;top:0;z-index:10;background:var(--navy);color:#fff;padding:10px 3vw;display:flex;align-items:center;gap:14px;flex-wrap:wrap;box-shadow:0 3px 12px #142b4430}.brand{font-weight:800;white-space:nowrap}.brand span{color:var(--gold)}nav{display:flex;gap:6px;flex:1;flex-wrap:wrap}nav button{border:1px solid #58708d;background:transparent;color:#e9f3ff;border-radius:20px;padding:5px 11px;font-size:.82rem}nav button.active,nav button.done{background:var(--gold);color:var(--navy);border-color:var(--gold);font-weight:700}#progress{height:5px;background:#d7e1ec}#progress i{display:block;height:100%;width:0;background:#e5a900;transition:.25s}main{max-width:1120px;margin:auto;padding:25px 18px 90px}.page{display:none}.page.active{display:block;animation:fade .2s}@keyframes fade{from{opacity:.4;transform:translateY(5px)}to{opacity:1;transform:none}}h1{font-size:2rem;line-height:1.2;color:var(--navy);margin:.2em 0}h2{font-size:1.35rem;color:var(--navy);margin:.2em 0 .5em}h3{font-size:1.08rem;margin:.3em 0}.sub{color:var(--muted);font-size:1.05rem}.tag{display:inline-block;background:var(--blue);color:#fff;padding:3px 10px;border-radius:30px;font-size:.78rem;font-weight:700}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:17px;margin:13px 0;box-shadow:0 3px 12px #24384d09}.analogy{background:#fff6db;border-left:6px solid var(--gold);padding:12px 15px;border-radius:10px;margin:12px 0}.tip{background:var(--pale);border-left:5px solid var(--blue);padding:11px 14px;border-radius:9px;margin:12px 0}.good{background:var(--greenbg);border-left:5px solid var(--green);padding:11px 14px;border-radius:9px;margin:12px 0}.warn{background:var(--redbg);border-left:5px solid var(--red);padding:11px 14px;border-radius:9px;margin:12px 0}.codebox{background:#101e30;color:#f2f6fc;border-radius:10px;padding:14px 16px;overflow:auto;margin:9px 0;font: .94rem/1.6 var(--mono);white-space:pre}.codebox .comment{color:#91b79e}.codebox .string{color:#f6cc80}.codebox .kw{color:#9ac7ff}.btn{border:0;border-radius:8px;background:var(--blue);color:white;padding:8px 14px;font-weight:650;margin:4px 3px 4px 0}.btn.gold{background:var(--gold);color:var(--navy)}.btn.light{background:#eaf1f8;color:var(--navy);border:1px solid #c6d5e4}.btn.green{background:var(--green)}.btn:disabled{opacity:.45;cursor:not-allowed}.listvisual{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.cell{min-width:85px;border:2px solid #9bb7d1;border-radius:9px;background:#f7fbff;text-align:center;overflow:hidden}.cell b{display:block;background:#dcebf8;color:var(--navy);padding:3px}.cell span{display:block;padding:8px 5px;font-family:var(--mono);font-weight:700}.cell small{display:block;color:var(--muted);border-top:1px dashed #c4d1dd;padding:3px}.q{border:1px solid var(--line);border-radius:11px;padding:13px;margin:12px 0;background:#fff}.opts{display:grid;gap:6px;margin-top:8px}.opts button{text-align:left;background:#f7f9fc;border:1px solid #cbd6e1;border-radius:8px;padding:8px 10px}.opts button.correct{background:var(--greenbg);border-color:var(--green)}.opts button.incorrect{background:var(--redbg);border-color:var(--red)}.feedback{font-weight:650;margin-top:8px}.muted{color:var(--muted);font-size:.9rem}.mission{border:2px dashed #8ca7c2}.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.row input,.row select{font:inherit;padding:8px;border:1px solid #b8c7d6;border-radius:7px}.sim{background:#f8fbff;border:1px solid #b8ccdf;border-radius:12px;padding:14px}.simout{background:#101e30;color:#dcecff;padding:10px;border-radius:8px;min-height:48px;white-space:pre-wrap;font-family:var(--mono);margin-top:8px}.stepnav{display:flex;justify-content:space-between;margin-top:24px;padding-top:14px;border-top:1px solid var(--line)}.score{font-size:1.3rem;font-weight:800;color:var(--navy)}.checklist label{display:block;margin:7px 0}.checklist input{transform:scale(1.15);margin-right:8px}table{width:100%;border-collapse:collapse;margin:10px 0}th,td{padding:9px;border:1px solid var(--line);text-align:left}th{background:#e8f0f8;color:var(--navy)}#foot{position:fixed;bottom:0;left:0;right:0;background:var(--navy);color:#fff;padding:8px 15px;display:flex;align-items:center;gap:12px;z-index:9}#foot button{background:var(--gold);color:var(--navy);border:0;border-radius:8px;padding:7px 14px;font-weight:800}#foot .spacer{flex:1}@media(max-width:720px){.grid,.grid3{grid-template-columns:1fr}h1{font-size:1.65rem}#top{position:static}nav button{font-size:.75rem}main{padding:17px 12px 100px}}@media print{#top,#foot,#progress,.stepnav{display:none!important}.page{display:block!important;page-break-after:always}.card{break-inside:avoid}body{background:#fff}}
+
+/* PURPLE + BLUE MOTION UPDATE */
+:root{--navy:#25145f;--blue:#4169e1;--gold:#b9a4ff;--pale:#eeedff;--bg:#f4f3ff;--line:#dedcf5}
+body{background:radial-gradient(circle at 12% 8%,#e6e2ff 0,transparent 28%),radial-gradient(circle at 92% 28%,#dceaff 0,transparent 25%),var(--bg)}
+#top{background:linear-gradient(105deg,#25145f,#344fc2 58%,#2478c9);background-size:180% 180%;animation:headerGlow 12s ease infinite}
+@keyframes headerGlow{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+#progress i{background:linear-gradient(90deg,#8b5cf6,#3b82f6,#22c1dc);box-shadow:0 0 10px #6b7cff88}
+.brand span{color:#d9ccff}
+h1{background:linear-gradient(90deg,#302078,#4169e1);-webkit-background-clip:text;background-clip:text;color:transparent}
+h2{color:#34247c}
+.tag{background:linear-gradient(90deg,#7048d8,#3479dc)}
+.card{box-shadow:0 7px 22px #352a7a0d;transition:transform .25s ease,box-shadow .25s ease}
+.card:hover{transform:translateY(-3px);box-shadow:0 12px 28px #352a7a18}
+.btn{background:linear-gradient(100deg,#6544c8,#3675dc);transition:transform .18s ease,filter .18s ease;box-shadow:0 3px 9px #4b54b522}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.08)}
+.btn.gold{background:linear-gradient(100deg,#a78bfa,#7c9cff);color:#201454}
+nav button.active,nav button.done{background:#c9b8ff;color:#25145f;border-color:#c9b8ff}
+.cell{border-color:#9c8be5;background:#f8f7ff;animation:cellPop .45s both}
+.cell b{background:linear-gradient(90deg,#e5ddff,#dceaff);color:#34247c}
+@keyframes cellPop{from{opacity:0;transform:translateY(12px) scale(.94)}to{opacity:1;transform:translateY(0) scale(1)}}
+.page.active{animation:pageIn .45s ease both}
+@keyframes pageIn{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+.analogy{background:linear-gradient(110deg,#f1eaff,#eaf1ff);border-left-color:#8059dc}
+.tip{background:#edf2ff;border-left-color:#4775df}
+.q{box-shadow:0 4px 14px #3930780a;transition:border-color .2s,transform .2s}
+.q:hover{border-color:#9a8be0;transform:translateY(-1px)}
+.opts button{transition:background .18s,border-color .18s,transform .18s}
+.opts button:hover:not(:disabled){background:#eeebff;border-color:#8973df;transform:translateX(3px)}
+.opts button.correct{animation:answerPop .35s ease}
+@keyframes answerPop{50%{transform:scale(1.025)}}
+#foot{background:linear-gradient(100deg,#25145f,#344fc2)}
+#foot button{background:#c9b8ff;color:#25145f}
+.hero-motion{position:relative;overflow:hidden;background:linear-gradient(120deg,#2b176e,#3e62cf 65%,#318acb);color:white;border-radius:18px;padding:24px;margin:14px 0;isolation:isolate}
+.hero-motion:before,.hero-motion:after{content:"";position:absolute;border:1px solid #ffffff40;border-radius:50%;width:190px;height:190px;right:8%;top:-90px;z-index:-1;animation:orbit 12s linear infinite}
+.hero-motion:after{width:270px;height:270px;right:2%;top:-130px;animation-duration:18s}
+@keyframes orbit{to{transform:rotate(360deg)}}
+.float-chip{display:inline-block;margin:5px;padding:8px 12px;border-radius:12px;background:#ffffff20;border:1px solid #ffffff45;animation:floaty 3s ease-in-out infinite}
+.float-chip:nth-child(2){animation-delay:.35s}.float-chip:nth-child(3){animation-delay:.7s}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition:none!important}}
+
+
+/* STUDENT-FRIENDLY WORKSHOP DESIGN */
+:root{--navy:#24145f;--blue:#3478e5;--gold:#bda7ff;--bg:#f4f5ff;--line:#deddf7}
+body{background:linear-gradient(135deg,#f5f1ff 0%,#eef5ff 55%,#f8f4ff 100%)}
+main{max-width:1160px}
+.brand{letter-spacing:.04em}.brand:before{content:"✦ ";color:#cbbaff}
+.hero-motion{padding:clamp(22px,4vw,38px);box-shadow:0 16px 38px #34247730}
+.hero-motion h2{font-size:clamp(1.35rem,3vw,2rem)}
+.hero-small{font-weight:700;color:#e6eaff}
+.section-prompt{display:inline-block;margin:0 0 12px;padding:7px 13px;border-radius:999px;background:linear-gradient(90deg,#eee7ff,#e5f0ff);color:#392b86;font-weight:700}
+.card{border-radius:18px;padding:clamp(15px,2.4vw,22px);border-color:#e2e0f8}
+.card h2{display:flex;align-items:center;gap:7px}
+.analogy{border-left-width:7px;border-radius:14px;color:#30265f}
+.tip,.good,.warn{border-radius:13px}
+.pep{background:linear-gradient(115deg,#eee8ff,#e6f2ff);border:1px solid #d8d5ff}
+.pep h3{color:#4831a0}
+.checkpoint{margin:18px 0;padding:15px;border:2px solid #c8baff;border-radius:18px;background:linear-gradient(135deg,#f4efff,#eef6ff)}
+.checkpoint>h3{font-size:1.2rem;color:#35227e;margin:0 0 3px}
+.checkpoint>p{margin:0 0 8px;color:#55547d}
+.q{border-radius:14px;padding:15px;border-color:#e1ddf7}
+.q b{line-height:1.5}
+.opts button{padding:10px 12px;border-radius:10px;color:#27234b}
+.opts button:focus-visible,.btn:focus-visible,nav button:focus-visible{outline:3px solid #f0a9ff;outline-offset:2px}
+.listvisual{gap:10px}
+.cell{min-width:92px;border-radius:12px;box-shadow:0 5px 12px #392c7b12}
+.cell span{overflow-wrap:anywhere}
+.codebox{border:1px solid #3a3c77;box-shadow:inset 0 1px #ffffff0a}
+.sim{border-radius:16px;background:linear-gradient(135deg,#faf9ff,#f0f6ff);border-color:#d7d5f3}
+.simout{border-radius:11px}
+#top{padding-top:12px;padding-bottom:12px}
+#pct{font-weight:800;background:#ffffff20;padding:4px 10px;border-radius:20px}
+#foot{box-shadow:0 -4px 18px #26165f20}
+.tag{letter-spacing:.03em}
+@media(max-width:720px){.hero-motion{padding:20px}.float-chip{font-size:.88rem}.section-prompt{border-radius:12px}}
+
+
+/* PINK + BLUE + PURPLE COLOUR THEME */
+:root{
+  --navy:#43206f;
+  --blue:#3987e8;
+  --gold:#f2a6d7;
+  --ink:#30243f;
+  --muted:#756780;
+  --line:#ead8f0;
+  --bg:#fbf3fb;
+  --card:#fff;
+  --pale:#f5e8fb;
+}
+body{
+  background:
+    radial-gradient(circle at 10% 8%,#ffe0f1 0,transparent 28%),
+    radial-gradient(circle at 92% 25%,#dceeff 0,transparent 27%),
+    linear-gradient(135deg,#fff5fb 0%,#f0f5ff 52%,#f7efff 100%);
+  color:var(--ink);
+}
+#top{
+  background:linear-gradient(105deg,#6b2d86 0%,#a34d9a 45%,#347fd0 100%);
+}
+#progress i{
+  background:linear-gradient(90deg,#ed78b8,#8b5bd6,#4398ec);
+  box-shadow:0 0 10px #d978bd66;
+}
+.brand span{color:#ffd4ed}
+h1{
+  background:linear-gradient(90deg,#a83e91,#6744b8 52%,#287ed0);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+h2{color:#63318c}
+.tag{background:linear-gradient(90deg,#c64c9b,#7950c7,#3987e8)}
+.card{border-color:#ecd9ef;box-shadow:0 7px 22px #813f8c12}
+.card:hover{box-shadow:0 12px 28px #813f8c20}
+.btn{
+  background:linear-gradient(100deg,#c64d9b,#7950c7 55%,#3987e8);
+  box-shadow:0 3px 9px #9b4eaa24;
+}
+.btn.gold{background:linear-gradient(100deg,#f4a7d2,#c78be6);color:#51265f}
+nav button{border-color:#d8b6e6}
+nav button.active,nav button.done{background:#f3b4dc;color:#54246d;border-color:#f3b4dc}
+.cell{border-color:#c18bd7;background:#fff8fd}
+.cell b{background:linear-gradient(90deg,#f9dced,#e3edff);color:#63318c}
+.analogy{background:linear-gradient(110deg,#fff0f8,#f1eaff);border-left-color:#d65b9e;color:#513052}
+.tip{background:#edf4ff;border-left-color:#4389df}
+.good{background:#effaf5;border-left-color:#269b70}
+.warn{background:#fff0f4;border-left-color:#d84d78}
+.q{border-color:#ecd9ef;box-shadow:0 4px 14px #813f8c0c}
+.q:hover{border-color:#d78bc3}
+.opts button{background:#fff8fd;border-color:#e4cde8;color:#352843}
+.opts button:hover:not(:disabled){background:#f8eafa;border-color:#c16eb2}
+.opts button.correct{background:#e9f8f0;border-color:#269b70}
+.opts button.incorrect{background:#fff0f2;border-color:#d84d78}
+.checkpoint{border-color:#d9a4d9;background:linear-gradient(135deg,#fff0f8,#eff5ff)}
+.checkpoint>h3{color:#713b91}
+.pep{background:linear-gradient(115deg,#fff0f8,#edf4ff);border-color:#e8c9e7}
+.pep h3{color:#813c91}
+.section-prompt{background:linear-gradient(90deg,#ffe7f3,#eee7ff,#e5f1ff);color:#63318c}
+.sim{background:linear-gradient(135deg,#fff9fd,#f0f6ff);border-color:#e2cce9}
+th{background:#f2e8fa;color:#63318c}
+#foot{background:linear-gradient(100deg,#6b2d86,#a34d9a 52%,#347fd0)}
+#foot button{background:#f4b6dc;color:#54246d}
+.hero-motion{background:linear-gradient(120deg,#6b2d86,#a64f9d 48%,#3987e8 100%)}
+.float-chip{background:#ffffff24;border-color:#ffffff65}
+@media(prefers-reduced-motion:reduce){
+  *,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition:none!important}
+}
+
+</style></head>
+<body>
+<header id="top"><div class="brand">ROBOTICS <span>• PYTHON LAB</span></div><nav id="nav"></nav><span id="pct">0% complete</span></header><div id="progress"><i id="bar"></i></div>
+<main>
+<section class="page active" data-title="Start here"><span class="tag">NCV LEVEL 4 • CONTENT 2</span><h1>Basic Python Lists</h1><p class="sub">No stress, future robotics programmer! We will learn Python lists one small step at a time. Read, watch, try, and celebrate each win.</p><div class="hero-motion"><h2 style="color:white;margin-top:0">🤖 Welcome to the Robot Workshop!</h2><p>Your robot needs a place to keep its information. A Python list is like a smart storage tray: it keeps related values together so your program can find and change them.</p><p class="hero-small">🎯 Your mission: become confident with lists, one skill at a time.</p><div><span class="float-chip">📡 sensor</span><span class="float-chip">⚙️ motor</span><span class="float-chip">🔋 battery</span></div></div>
+<div class="card"><h2>🌟 Your learning goals</h2><p>Tick each skill when you feel confident. It is okay if you need to practise more than once!</p><div class="checklist"><label><input type="checkbox"> Create a list using the correct Python syntax.</label><label><input type="checkbox"> Display, access and change list values using indexes.</label><label><input type="checkbox"> Add items with <code>append()</code> and <code>insert()</code>.</label><label><input type="checkbox"> Remove items with <code>del</code>, <code>pop()</code> and <code>remove()</code>.</label><label><input type="checkbox"> Sort permanently with <code>sort()</code> and temporarily with <code>sorted()</code>.</label><label><input type="checkbox"> Find the number of items using <code>len()</code>.</label></div></div>
+<div class="analogy"><b>🧰 Imagine a robot's parts tray.</b><br>A Python list is like a tray with numbered spaces. Each space stores one value: a sensor name, a motor speed, a distance reading or a component. You can look at a space, replace its value, add new values or remove values.</div>
+<div class="grid3"><div class="card"><h3>📦 Store</h3><p>Keep several related values in one variable.</p></div><div class="card"><h3>🛠️ Change</h3><p>Update, add or remove values when needed.</p></div><div class="card"><h3>🔢 Organise</h3><p>Sort values and count how many there are.</p></div></div>
+<div class="tip"><b>💡 Your learning routine:</b> <b>1.</b> Read the simple explanation. <b>2.</b> Look at the example. <b>3.</b> Guess the output. <b>4.</b> Try the activity. <b>5.</b> Answer the quick quiz. You learn by practising — mistakes are part of the process!</div><div class="card pep"><h3>🚀 You do not need to memorise everything at once.</h3><p>Keep the revision page nearby, practise in Thonny, and come back to any section whenever you need a reminder.</p></div>
+</section>
+<section class="page" data-title="1. Create lists"><span class="tag">OUTCOME 11.2.1</span><h1>1. Creating a Python list</h1><p class="section-prompt">🧩 Skill 1: Put related information into one container.</p><p class="sub">A list stores multiple values in one variable.</p><div class="analogy"><b>Think of a shopping list.</b> Instead of creating a separate variable for every item, keep all the items together in one list.</div>
+<div class="card"><h2>General syntax</h2><div class="codebox">list_name = [item1, item2, item3]</div><ul><li>The list name follows normal variable naming rules.</li><li>Square brackets <code>[ ]</code> mark the beginning and end of a list.</li><li>Items are separated by commas.</li><li>Text values must be placed inside quotation marks.</li></ul></div>
+<div class="grid"><div class="card"><h3>List of text (strings)</h3><div class="codebox">sensors = [<span class="string">"ultrasonic"</span>, <span class="string">"infrared"</span>, <span class="string">"touch"</span>]</div></div><div class="card"><h3>List of numbers</h3><div class="codebox">motor_speeds = [<span class="kw">40</span>, <span class="kw">60</span>, <span class="kw">80</span>]</div></div></div>
+<div class="card"><h2>What does the list look like?</h2><p>For <code>sensors = ["ultrasonic", "infrared", "touch"]</code>:</p><div class="listvisual"><div class="cell"><b>Index 0</b><span>ultrasonic</span><small>first item</small></div><div class="cell"><b>Index 1</b><span>infrared</span><small>second item</small></div><div class="cell"><b>Index 2</b><span>touch</span><small>third item</small></div></div><div class="warn"><b>Remember:</b> Python starts counting list positions at <b>0</b>, not 1. The first item is index 0.</div></div>
+<div class="q" data-answer="1" data-explain="A list uses square brackets, and commas separate the values."><b>Quick check:</b> Which line correctly creates a list?<div class="opts"><button>A. parts = ("wheel", "motor")</button><button>B. parts = ["wheel", "motor"]</button><button>C. parts = {"wheel", "motor"</button></div><div class="feedback"></div></div>
+<div class="card"><h2>Common syntax mistakes</h2><table><tr><th>Incorrect</th><th>Correct</th><th>Why?</th></tr><tr><td><code>sensors = "IR", "touch"</code></td><td><code>sensors = ["IR", "touch"]</code></td><td>Use square brackets for a list.</td></tr><tr><td><code>sensors = [IR, touch]</code></td><td><code>sensors = ["IR", "touch"]</code></td><td>Text needs quotation marks.</td></tr><tr><td><code>sensors = ["IR" "touch"]</code></td><td><code>sensors = ["IR", "touch"]</code></td><td>Separate items with commas.</td></tr></table></div><div class="checkpoint"><h3>⚡ Level-up checkpoint</h3><p>Try these before moving on. You can do it!</p><div class="q" data-answer="0" data-explain="Commas separate list items."><b>Which symbol separates the items in a list?</b><div class="opts"><button>A. A comma (,)</button><button>B. A full stop (.)</button><button>C. A colon (:)</button></div><div class="feedback"></div></div><div class="q" data-answer="1" data-explain="Text (strings) must be inside quotation marks, and a list uses square brackets."><b>Which is a text value written correctly in a list?</b><div class="opts"><button>A. [sensor, motor]</button><button>B. ["sensor", "motor"]</button><button>C. ("sensor", "motor"]</button></div><div class="feedback"></div></div></div></section>
+<section class="page" data-title="2. Index & change"><span class="tag">OUTCOME 11.2.2</span><h1>2. Output, access and modify list values</h1><p class="section-prompt">🔎 Skill 2: Find the value you need, then update it safely.</p><div class="analogy"><b>Index = numbered drawer.</b> If you want the value in a particular drawer, use its index inside square brackets.</div>
+<div class="card"><h2>Access a value</h2><div class="codebox">motor_speeds = [40, 60, 80]
+print(motor_speeds[0])  <span class="comment"># displays 40</span>
+print(motor_speeds[2])  <span class="comment"># displays 80</span></div><div class="good">The general pattern is <code>list_name[index]</code>.</div></div>
+<div class="card"><h2>Change (assign) a value</h2><div class="codebox">motor_speeds = [40, 60, 80]
+motor_speeds[1] = 75
+print(motor_speeds)
+<span class="comment"># Output: [40, 75, 80]</span></div><p>The equals sign assigns a new value to the selected position. It replaces the old value.</p></div>
+<div class="card"><h2>Explore the indexes</h2><p>Click a numbered position to see its value. Then choose a new value and update that position.</p><div id="indexDemo" class="sim"><div class="listvisual" id="indexCells"></div><div class="row"><label>Index <select id="idx"><option>0</option><option>1</option><option>2</option></select></label><label>New value <input id="newval" type="number" value="75"></label><button class="btn" onclick="changeIndex()">Update value</button><button class="btn light" onclick="resetIndex()">Reset</button></div><div class="simout" id="indexOut">Select an index and update it.</div></div></div>
+<div class="warn"><b>Index error:</b> If a list has 3 items, its valid indexes are 0, 1 and 2. Trying index 3 causes an <code>IndexError</code> because that position does not exist.</div>
+<div class="q" data-answer="2" data-explain="Index 1 is the second item. Its value is 60."><b>Quick check:</b> What does this display?<pre class="codebox">values = [25, 60, 90]
+print(values[1])</pre><div class="opts"><button>A. 25</button><button>B. 90</button><button>C. 60</button></div><div class="feedback"></div></div>
+<div class="checkpoint"><h3>⚡ Level-up checkpoint</h3><p>Try these before moving on. You can do it!</p><div class="q" data-answer="1" data-explain="The first item is index 0, so the second item is index 1."><b>What is the index of the second item?</b><div class="opts"><button>A. 0</button><button>B. 1</button><button>C. 2</button></div><div class="feedback"></div></div><div class="q" data-answer="1" data-explain="The third item has index 2. Use square brackets to access it."><b>Which statement changes the third reading to 99?</b><div class="opts"><button>A. readings[3] = 99</button><button>B. readings[2] = 99</button><button>C. readings(2) = 99</button></div><div class="feedback"></div></div></div></section>
+<section class="page" data-title="3. append & insert"><span class="tag">OUTCOMES 11.2.3 &amp; 11.2.4</span><h1>3. Adding items to a list</h1><p class="section-prompt">➕ Skill 3: Give your robot new information.</p><div class="grid"><div class="card"><h2><code>append()</code></h2><p>Adds one item to the <b>end</b> of a list.</p><div class="codebox">components = [<span class="string">"motor"</span>, <span class="string">"wheel"</span>]
+components.append(<span class="string">"sensor"</span>)
+print(components)
+<span class="comment"># ['motor', 'wheel', 'sensor']</span></div><div class="analogy">Append = join the back of the queue.</div></div><div class="card"><h2><code>insert()</code></h2><p>Adds one item at a chosen index.</p><div class="codebox">components = [<span class="string">"motor"</span>, <span class="string">"wheel"</span>]
+components.insert(1, <span class="string">"sensor"</span>)
+print(components)
+<span class="comment"># ['motor', 'sensor', 'wheel']</span></div><div class="analogy">Insert = choose a specific place in the queue.</div></div></div>
+<div class="tip"><b>Remember the brackets:</b> <code>append(value)</code> needs the value. <code>insert(index, value)</code> needs both the position and the value, in that order.</div>
+<div class="card"><h2>Try it: robot component tray</h2><div class="sim"><div class="listvisual" id="addCells"></div><div class="row"><input id="addValue" value="camera" aria-label="New component"><button class="btn" onclick="addAppend()">append(value)</button><label>Position <input id="addPos" type="number" min="0" value="1" style="width:70px"></label><button class="btn gold" onclick="addInsert()">insert(index, value)</button><button class="btn light" onclick="resetAdd()">Reset</button></div><div class="simout" id="addOut">Choose append or insert to change the list.</div></div></div>
+<div class="q" data-answer="0" data-explain="append() always adds the new value at the end of the list."><b>Quick check:</b> Which function adds an item to the end?<div class="opts"><button>A. append()</button><button>B. insert()</button><button>C. remove()</button></div><div class="feedback"></div></div>
+<div class="q" data-answer="1" data-explain="insert(2, 'camera') places camera at index 2."><b>Quick check:</b> Which statement adds <code>"camera"</code> at index 2?<div class="opts"><button>A. parts.append(2, "camera")</button><button>B. parts.insert(2, "camera")</button><button>C. parts.remove(2, "camera")</button></div><div class="feedback"></div></div>
+<div class="checkpoint"><h3>⚡ Level-up checkpoint</h3><p>Try these before moving on. You can do it!</p><div class="q" data-answer="1" data-explain="insert() uses the position first, followed by the new value."><b>What is the correct order of arguments in insert()?</b><div class="opts"><button>A. value, index</button><button>B. index, value</button><button>C. list, value</button></div><div class="feedback"></div></div><div class="q" data-answer="2" data-explain="append() adds the new item at the end."><b>A list has ["A", "B"]. What is the result of items.append("C")?</b><div class="opts"><button>A. ["C", "A", "B"]</button><button>B. ["A", "C", "B"]</button><button>C. ["A", "B", "C"]</button></div><div class="feedback"></div></div></div></section>
+<section class="page" data-title="4. Remove items"><span class="tag">OUTCOMES 11.2.5–11.2.7</span><h1>4. Removing items from a list</h1><p class="section-prompt">🧹 Skill 4: Remove the right item using the right command.</p><div class="card"><h2>Three ways to remove – know the difference!</h2><table><tr><th>Method</th><th>Removes</th><th>Example</th></tr><tr><td><code>del</code></td><td>Item at a specific index</td><td><code>del parts[1]</code></td></tr><tr><td><code>pop()</code></td><td>Last item by default; returns the removed item</td><td><code>removed = parts.pop()</code></td></tr><tr><td><code>remove()</code></td><td>First matching value</td><td><code>parts.remove("wheel")</code></td></tr></table></div>
+<div class="grid"><div class="card"><h2>1. <code>del</code> – delete by position</h2><div class="codebox">parts = [<span class="string">"motor"</span>, <span class="string">"wheel"</span>, <span class="string">"sensor"</span>]
+del parts[1]
+print(parts)
+<span class="comment"># ['motor', 'sensor']</span></div><p>Index 1 is removed. You do not need brackets after <code>del</code> beyond the list subscript.</p></div><div class="card"><h2>2. <code>pop()</code> – remove and keep</h2><div class="codebox">parts = [<span class="string">"motor"</span>, <span class="string">"wheel"</span>, <span class="string">"sensor"</span>]
+last_part = parts.pop()
+print(last_part) <span class="comment"># sensor</span>
+print(parts)      <span class="comment"># ['motor', 'wheel']</span></div><p>The removed item is stored in <code>last_part</code>. You can also use <code>pop(index)</code> to remove a chosen position.</p></div></div>
+<div class="card"><h2>3. <code>remove()</code> – remove by value</h2><div class="codebox">parts = [<span class="string">"motor"</span>, <span class="string">"wheel"</span>, <span class="string">"sensor"</span>]
+parts.remove(<span class="string">"wheel"</span>)
+print(parts)
+<span class="comment"># ['motor', 'sensor']</span></div><p>You give <code>remove()</code> the value, not its index. It removes the first matching value.</p></div>
+<div class="warn"><b>Important differences:</b> <code>del parts[1]</code> uses an index. <code>parts.remove("wheel")</code> uses a value. <code>parts.pop()</code> removes an item and gives it back so you can assign it to a variable.</div>
+<div class="card"><h2>Interactive removal lab</h2><p>Start with <code>['motor', 'wheel', 'sensor', 'battery']</code>. Try each removal method.</p><div class="sim"><div class="listvisual" id="removeCells"></div><div class="row"><button class="btn" onclick="removeDel()">del index 1</button><button class="btn gold" onclick="removePop()">pop()</button><button class="btn" onclick="removeValue()">remove("sensor")</button><button class="btn light" onclick="resetRemove()">Reset</button></div><div class="simout" id="removeOut">The output will appear here.</div></div></div>
+<div class="q" data-answer="2" data-explain="pop() removes the last item and returns it, so it can be assigned to a variable."><b>Quick check:</b> Which method removes the last item and lets you store that item in a variable?<div class="opts"><button>A. del</button><button>B. remove()</button><button>C. pop()</button></div><div class="feedback"></div></div>
+<div class="q" data-answer="1" data-explain="remove('wheel') searches for the value wheel and removes it."><b>Quick check:</b> Which line removes the value <code>"wheel"</code>?<div class="opts"><button>A. del parts["wheel"]</button><button>B. parts.remove("wheel")</button><button>C. parts.pop("wheel")</button></div><div class="feedback"></div></div>
+<div class="checkpoint"><h3>⚡ Level-up checkpoint</h3><p>Try these before moving on. You can do it!</p><div class="q" data-answer="0" data-explain="del with a subscript removes an item by its position."><b>Which command removes the item at index 2?</b><div class="opts"><button>A. del items[2]</button><button>B. items.remove(2)</button><button>C. items.append(2)</button></div><div class="feedback"></div></div><div class="q" data-answer="1" data-explain="pop() removes and returns the last item by default."><b>What does removed = items.pop() do?</b><div class="opts"><button>A. Counts the list</button><button>B. Removes the last item and stores it in removed</button><button>C. Removes the value named removed</button></div><div class="feedback"></div></div><div class="q" data-answer="0" data-explain="remove() searches for the value and removes its first matching occurrence."><b>If items = ["motor", "wheel"], what does items.remove("wheel") do?</b><div class="opts"><button>A. Removes wheel by value</button><button>B. Removes index 1 only if specified</button><button>C. Adds wheel again</button></div><div class="feedback"></div></div></div></section>
+<section class="page" data-title="5. Sorting lists"><span class="tag">OUTCOME 11.2.8</span><h1>5. Sorting a list</h1><p class="section-prompt">📊 Skill 5: Put information in a useful order.</p><div class="analogy"><b>Imagine arranging robot component labels alphabetically.</b> Sorting puts values into order so they are easier to read and process.</div>
+<div class="grid"><div class="card"><h2><code>sort()</code> – permanent</h2><p>Changes the original list order.</p><div class="codebox">speeds = [80, 40, 60]
+speeds.sort()
+print(speeds)
+<span class="comment"># [40, 60, 80]</span></div><span class="tag">ORIGINAL LIST CHANGES</span></div><div class="card"><h2><code>sorted()</code> – temporary result</h2><p>Returns a new sorted list. The original list stays in its old order.</p><div class="codebox">speeds = [80, 40, 60]
+ordered = sorted(speeds)
+print(ordered) <span class="comment"># [40, 60, 80]</span>
+print(speeds)  <span class="comment"># [80, 40, 60]</span></div><span class="tag">ORIGINAL LIST STAYS THE SAME</span></div></div>
+<div class="card"><h2>Ascending and descending order</h2><div class="codebox">speeds.sort()                 <span class="comment"># ascending: low to high</span>
+speeds.sort(reverse=True)     <span class="comment"># descending: high to low</span>
+ordered = sorted(speeds)      <span class="comment"># new ascending list</span>
+ordered = sorted(speeds, reverse=True) <span class="comment"># new descending list</span></div></div>
+<div class="card"><h2>See the difference</h2><div class="sim"><div class="row"><button class="btn" onclick="sortPermanent()">Try sort()</button><button class="btn gold" onclick="sortTemporary()">Try sorted()</button><button class="btn light" onclick="resetSort()">Reset</button></div><p><b>Original list:</b></p><div class="listvisual" id="sortOriginal"></div><p><b>Result:</b></p><div class="listvisual" id="sortResult"></div><div class="simout" id="sortOut">Choose a sorting method.</div></div></div>
+<div class="warn"><b>Exam tip:</b> Do not write <code>new_list = numbers.sort()</code> expecting a sorted list. <code>sort()</code> changes the list in place and returns <code>None</code>. Use <code>numbers.sort()</code> or <code>new_list = sorted(numbers)</code>.</div>
+<div class="q" data-answer="0" data-explain="sort() sorts the list in place, so the original list is changed."><b>Quick check:</b> Which method permanently changes the original list?<div class="opts"><button>A. sort()</button><button>B. sorted()</button><button>C. len()</button></div><div class="feedback"></div></div>
+<div class="q" data-answer="1" data-explain="sorted() returns a new sorted list and leaves the original unchanged."><b>Quick check:</b> Which method gives you a sorted result while keeping the original list unchanged?<div class="opts"><button>A. sort()</button><button>B. sorted()</button><button>C. append()</button></div><div class="feedback"></div></div>
+<div class="checkpoint"><h3>⚡ Level-up checkpoint</h3><p>Try these before moving on. You can do it!</p><div class="q" data-answer="1" data-explain="sorted() creates and returns a new sorted list."><b>Which command keeps the original list unchanged and returns a sorted copy?</b><div class="opts"><button>A. list.sort()</button><button>B. sorted(list)</button><button>C. list.append()</button></div><div class="feedback"></div></div><div class="q" data-answer="0" data-explain="reverse=True sorts in descending order."><b>Which command sorts from highest to lowest?</b><div class="opts"><button>A. values.sort(reverse=True)</button><button>B. sorted(values, reverse=False)</button><button>C. values.len()</button></div><div class="feedback"></div></div></div></section>
+<section class="page" data-title="6. List length"><span class="tag">OUTCOME 11.2.9</span><h1>6. Finding the length of a list</h1><p class="section-prompt">🔢 Skill 6: Count how many values your list contains.</p><div class="analogy"><b><code>len()</code> is a counting tool.</b> It tells you how many items are inside the list – not the index of the last item.</div>
+<div class="card"><h2>Syntax and example</h2><div class="codebox">sensors = [<span class="string">"ultrasonic"</span>, <span class="string">"infrared"</span>, <span class="string">"touch"</span>]
+count = len(sensors)
+print(count)
+<span class="comment"># Output: 3</span></div><p>Use <code>len(list_name)</code>. The answer is the total number of items.</p></div>
+<div class="card"><h2>Length versus index</h2><div class="listvisual"><div class="cell"><b>Index 0</b><span>10</span></div><div class="cell"><b>Index 1</b><span>20</span></div><div class="cell"><b>Index 2</b><span>30</span></div><div class="cell" style="border-color:var(--green)"><b>Length</b><span>3</span><small>three items</small></div></div><p>This list has a length of 3, but its last valid index is 2.</p></div>
+<div class="card"><h2>Try the counter</h2><div class="sim"><div class="row"><input id="lenItems" value="12, 18, 25, 30" style="flex:1;min-width:210px"><button class="btn" onclick="countItems()">Run len()</button></div><div class="simout" id="lenOut">Enter comma-separated values, then click Run len().</div></div></div>
+<div class="q" data-answer="2" data-explain="len() counts the items. There are four values, so the answer is 4."><b>Quick check:</b> What does <code>len([5, 10, 15, 20])</code> return?<div class="opts"><button>A. 3</button><button>B. 20</button><button>C. 4</button></div><div class="feedback"></div></div>
+<div class="checkpoint"><h3>⚡ Level-up checkpoint</h3><p>Try these before moving on. You can do it!</p><div class="q" data-answer="1" data-explain="len() returns the total number of items."><b>A list contains 6 items. What does len(my_list) return?</b><div class="opts"><button>A. 5</button><button>B. 6</button><button>C. 7</button></div><div class="feedback"></div></div><div class="q" data-answer="1" data-explain="For four items, indexes are 0, 1, 2 and 3."><b>A list has 4 items. What is its last valid index?</b><div class="opts"><button>A. 4</button><button>B. 3</button><button>C. 5</button></div><div class="feedback"></div></div></div></section>
+<section class="page" data-title="7. Practice lab"><span class="tag">PUT IT ALL TOGETHER</span><h1>7. Robotics list practice lab</h1><p class="section-prompt">🛠️ Skill 7: Combine your new skills to solve a robot problem.</p><p class="sub">A robot stores a set of sensor readings. Follow the instructions and write the Python statements that would perform each task.</p>
+<div class="card mission"><h2>Mission: Sensor readings</h2><p>Start with this list:</p><div class="codebox">readings = [34, 28, 41, 30]</div><ol><li>Display the first reading.</li><li>Change the second reading to 35.</li><li>Add 26 to the end of the list.</li><li>Insert 32 at index 2.</li><li>Delete the item at index 0.</li><li>Remove the last item and assign it to <code>last_reading</code>.</li><li>Remove the value 41.</li><li>Create a sorted copy called <code>sorted_readings</code>.</li><li>Display the number of items remaining.</li></ol><button class="btn" onclick="document.getElementById('missionSolution').hidden=false">Show worked solution</button><div id="missionSolution" hidden><div class="codebox">readings = [34, 28, 41, 30]
+print(readings[0])
+readings[1] = 35
+readings.append(26)
+readings.insert(2, 32)
+del readings[0]
+last_reading = readings.pop()
+readings.remove(41)
+sorted_readings = sorted(readings)
+print(len(readings))</div><p class="muted">Trace the list after each line. The value removed by pop() is stored in last_reading.</p></div></div>
+<div class="card"><h2>Write your own code</h2><p>Use this box to practise. It does not run Python; use it to plan and check your statements.</p><textarea id="studentCode" rows="9" style="width:100%;font: .95rem/1.5 var(--mono);padding:12px;border:1px solid #b8c7d6;border-radius:9px" placeholder="readings = [ ... ]&#10;print(...)&#10;..."></textarea><div class="row"><button class="btn" onclick="saveDraft()">Keep my practice text visible</button><button class="btn light" onclick="document.getElementById('studentCode').value='';">Clear</button><span id="draftMsg" class="muted"></span></div></div>
+<div class="card"><h2>Challenge: Motor speed manager</h2><p>Create a list called <code>motor_speeds</code> containing <code>50, 75, 60</code>. Add <code>90</code> to the end, insert <code>65</code> at index 1, remove the value <code>75</code>, sort the original list, and print its length.</p><p><b>Expected final list:</b> <code>[50, 60, 65, 90]</code> &nbsp; <b>Expected length:</b> <code>4</code></p></div>
+<div class="checkpoint"><h3>⚡ Level-up checkpoint</h3><p>Try these before moving on. You can do it!</p><div class="q" data-answer="1" data-explain="Use len(readings) to count the items."><b>Which command would show the number of sensor readings?</b><div class="opts"><button>A. print(readings.len())</button><button>B. print(len(readings))</button><button>C. print(readings.count_all())</button></div><div class="feedback"></div></div><div class="q" data-answer="0" data-explain="append(27) adds 27 at the end of the list."><b>You need to add a new reading at the end. Which command should you use?</b><div class="opts"><button>A. readings.append(27)</button><button>B. readings.insert()</button><button>C. del readings[27]</button></div><div class="feedback"></div></div></div></section>
+<section class="page" data-title="8. Final quiz"><span class="tag">CHECK YOUR UNDERSTANDING</span><h1>8. Final knowledge check</h1><p class="section-prompt">🏁 You have practised. Now show what you know!</p><p class="sub">Choose one answer for each question. Your score updates as you answer. Take your time — you have got this!</p><div id="finalQuiz"></div><div class="card"><div class="score" id="finalScore">Score: 0 / 21</div><p id="gradeMsg" class="muted">Answer all questions to see your result.</p><button class="btn gold" onclick="resetQuiz()">Try quiz again</button></div></section>
+<section class="page" data-title="9. Summary"><span class="tag">REVISION PAGE</span><h1>9. Quick revision guide</h1><p class="section-prompt">💜 Your quick-reference page — use it whenever you need help.</p><div class="card"><h2>List commands at a glance</h2><table><tr><th>Task</th><th>Syntax</th><th>Remember</th></tr><tr><td>Create</td><td><code>parts = ["motor", "wheel"]</code></td><td>Square brackets, commas</td></tr><tr><td>Access</td><td><code>parts[0]</code></td><td>First index is 0</td></tr><tr><td>Change</td><td><code>parts[1] = "sensor"</code></td><td>Assign a new value</td></tr><tr><td>Add at end</td><td><code>parts.append("sensor")</code></td><td>One value at the end</td></tr><tr><td>Add at position</td><td><code>parts.insert(1, "sensor")</code></td><td>Index first, value second</td></tr><tr><td>Delete by index</td><td><code>del parts[1]</code></td><td>Position</td></tr><tr><td>Remove and return</td><td><code>removed = parts.pop()</code></td><td>Last item by default</td></tr><tr><td>Remove by value</td><td><code>parts.remove("wheel")</code></td><td>Value, not index</td></tr><tr><td>Sort original</td><td><code>parts.sort()</code></td><td>Permanent change</td></tr><tr><td>Sorted copy</td><td><code>ordered = sorted(parts)</code></td><td>Original unchanged</td></tr><tr><td>Count items</td><td><code>len(parts)</code></td><td>Total number of items</td></tr></table></div>
+<div class="card"><h2>Before your assessment</h2><div class="checklist"><label><input type="checkbox"> I can create a list using square brackets.</label><label><input type="checkbox"> I know that the first index is 0.</label><label><input type="checkbox"> I can update an item using its index.</label><label><input type="checkbox"> I can explain the difference between append() and insert().</label><label><input type="checkbox"> I can explain the difference between del, pop() and remove().</label><label><input type="checkbox"> I can explain the difference between sort() and sorted().</label><label><input type="checkbox"> I can use len() to count the items.</label></div></div>
+<div class="good"><b>Well done!</b> You have completed the Basic Python Lists lesson. Revisit any section where you need more practice. You can print this tutorial using your browser's Print option.</div>
+</section>
+</main>
+<footer id="foot"><button id="prev" onclick="move(-1)">← Back</button><span id="footlabel">Section 1 of 9</span><span class="spacer"></span><button id="next" onclick="move(1)">Next →</button></footer>
+<script>
+const pages=[...document.querySelectorAll('.page')];let current=0;const nav=document.getElementById('nav');pages.forEach((p,i)=>{let b=document.createElement('button');b.textContent=p.dataset.title;b.onclick=()=>show(i);nav.appendChild(b)});function show(i){current=Math.max(0,Math.min(pages.length-1,i));pages.forEach((p,j)=>p.classList.toggle('active',j===current));[...nav.children].forEach((b,j)=>{b.classList.toggle('active',j===current);b.classList.toggle('done',j<current)});document.getElementById('prev').disabled=current===0;document.getElementById('next').textContent=current===pages.length-1?'Finish ✓':'Next →';document.getElementById('footlabel').textContent=`Section ${current+1} of ${pages.length}`;let pct=Math.round(current/(pages.length-1)*100);document.getElementById('bar').style.width=pct+'%';document.getElementById('pct').textContent=pct+'% complete';window.scrollTo({top:0,behavior:'smooth'})}function move(d){show(current+d)}
+// Multiple choice feedback
+for(const q of document.querySelectorAll('.q')){const opts=[...q.querySelectorAll('.opts button')],correct=Number(q.dataset.answer);opts.forEach((b,i)=>b.onclick=()=>{opts.forEach(x=>{x.disabled=true});b.classList.add(i===correct?'correct':'incorrect');if(i!==correct)opts[correct].classList.add('correct');q.querySelector('.feedback').textContent=(i===correct?'Correct! ':'Not quite. ')+q.dataset.explain;q.querySelector('.feedback').style.color=i===correct?'var(--green)':'var(--red)'})}
+// Index demo
+let idxValues=[40,60,80];function drawIndex(){document.getElementById('indexCells').innerHTML=idxValues.map((v,i)=>`<div class="cell"><b>Index ${i}</b><span>${v}</span></div>`).join('')}function changeIndex(){let i=+document.getElementById('idx').value,v=Number(document.getElementById('newval').value);idxValues[i]=v;drawIndex();document.getElementById('indexOut').textContent=`motor_speeds[${i}] = ${v}\nUpdated list: [${idxValues.join(', ')}]`}function resetIndex(){idxValues=[40,60,80];drawIndex();document.getElementById('indexOut').textContent='List reset to [40, 60, 80].'}drawIndex();
+// Add demo
+let addValues=['motor','wheel'];function drawAdd(){document.getElementById('addCells').innerHTML=addValues.map((v,i)=>`<div class="cell"><b>Index ${i}</b><span>${v}</span></div>`).join('')}function addAppend(){let v=document.getElementById('addValue').value.trim();if(!v)return;addValues.push(v);drawAdd();document.getElementById('addOut').textContent=`append(${JSON.stringify(v)})\n${JSON.stringify(addValues)}`}function addInsert(){let v=document.getElementById('addValue').value.trim(),i=Math.max(0,Math.min(addValues.length,+document.getElementById('addPos').value||0));if(!v)return;addValues.splice(i,0,v);drawAdd();document.getElementById('addOut').textContent=`insert(${i}, ${JSON.stringify(v)})\n${JSON.stringify(addValues)}`}function resetAdd(){addValues=['motor','wheel'];drawAdd();document.getElementById('addOut').textContent='List reset.'}drawAdd();
+// Removal demo
+let remValues=['motor','wheel','sensor','battery'];function drawRem(){document.getElementById('removeCells').innerHTML=remValues.map((v,i)=>`<div class="cell"><b>Index ${i}</b><span>${v}</span></div>`).join('')||'<i>List is empty</i>'}function removeDel(){if(remValues.length>1){remValues.splice(1,1);document.getElementById('removeOut').textContent=`del parts[1]\nList: ${JSON.stringify(remValues)}`}else document.getElementById('removeOut').textContent='Not enough items to demonstrate index 1.';drawRem()}function removePop(){if(remValues.length){let v=remValues.pop();document.getElementById('removeOut').textContent=`last_part = parts.pop()\nlast_part = ${JSON.stringify(v)}\nList: ${JSON.stringify(remValues)}`}else document.getElementById('removeOut').textContent='The list is empty.';drawRem()}function removeValue(){let i=remValues.indexOf('sensor');if(i>=0){remValues.splice(i,1);document.getElementById('removeOut').textContent=`parts.remove("sensor")\nList: ${JSON.stringify(remValues)}`}else document.getElementById('removeOut').textContent='Value "sensor" is not currently in the list.';drawRem()}function resetRemove(){remValues=['motor','wheel','sensor','battery'];drawRem();document.getElementById('removeOut').textContent='List reset.'}drawRem();
+// Sorting
+let sortValues=[80,40,60];function drawSort(result=sortValues){document.getElementById('sortOriginal').innerHTML=sortValues.map((v,i)=>`<div class="cell"><b>${i}</b><span>${v}</span></div>`).join('');document.getElementById('sortResult').innerHTML=result.map(v=>`<div class="cell"><span>${v}</span></div>`).join('')}function sortPermanent(){sortValues.sort((a,b)=>a-b);drawSort();document.getElementById('sortOut').textContent='speeds.sort()\nThe original list has changed.'}function sortTemporary(){let result=[...sortValues].sort((a,b)=>a-b);drawSort(result);document.getElementById('sortOut').textContent='ordered = sorted(speeds)\nThe original list is unchanged; ordered is a new sorted list.'}function resetSort(){sortValues=[80,40,60];drawSort();document.getElementById('sortOut').textContent='Reset to [80, 40, 60].'}drawSort();
+function countItems(){let s=document.getElementById('lenItems').value;let a=s.split(',').map(x=>x.trim()).filter(x=>x.length);document.getElementById('lenOut').textContent=`len([${a.join(', ')}])\nThere are ${a.length} item(s).`}
+function saveDraft(){document.getElementById('draftMsg').textContent='Your practice text is still in this box. Copy it into Thonny to run it.'}
+// Final assessment
+const questions=[
+['Which brackets are used to create a Python list?',['( )','[ ]','{ }'],1,'Square brackets create a list.'],
+['What is the index of the first item?',['0','1','-1'],0,'Python list indexes begin at zero.'],
+['Which statement displays the third item in parts?',['parts[3]','parts[2]','parts(2)'],1,'The third item is at index 2.'],
+['Which statement changes the first item to "camera"?',['parts[0] = "camera"','parts.append[0] = "camera"','parts.insert = "camera"'],0,'Assign the new value to parts[0].'],
+['Which method adds an item to the end?',['insert()','append()','pop()'],1,'append() adds at the end.'],
+['How do you add "IR" at index 2?',['sensors.append(2, "IR")','sensors.insert(2, "IR")','sensors.remove(2)'],1,'insert() takes the index followed by the value.'],
+['Which removes an item at index 1?',['del parts[1]','parts.remove(1)','parts.append(1)'],0,'del with a subscript removes by position.'],
+['Which removes the last item and returns it?',['remove()','sort()','pop()'],2,'pop() returns the removed item.'],
+['Which method sorts the original list?',['sorted()','sort()','len()'],1,'sort() changes the original list.'],
+['What is len([7, 8, 9, 10])?',['3','4','10'],1,'There are four items in the list.'],
+['Which line displays the last value in a three-item list?',['parts[3]','parts[2]','parts[1]'],1,'The last item in a three-item list has index 2.'],
+['What happens after speeds.append(90) when speeds = [30, 50]?',['[90, 30, 50]','[30, 50, 90]','[30, 90, 50]'],1,'append() adds the new value at the end.'],
+['What does names.insert(1, "Robo") do?',['Adds Robo at index 1','Replaces index 1','Removes index 1'],0,'insert() places the new value at the specified position.'],
+['Which statement changes index 2 to 75?',['readings[75] = 2','readings[2] = 75','readings.insert(75, 2)'],1,'Use the index on the left and the new value on the right.'],
+['What does del motors[0] remove?',['The value 0','The first item','The last item'],1,'del with a subscript removes the item at that index.'],
+['What is stored in x after x = ["A", "B"].pop()?',['A','B','Nothing'],1,'pop() removes and returns the last item, which is B.'],
+['What happens if parts.remove("wheel") is used?',['Removes the value wheel','Removes index wheel','Adds wheel'],0,'remove() searches for the matching value.'],
+['Which expression makes a sorted copy of readings?',['readings.sort()','sorted(readings)','len(readings)'],1,'sorted() returns a new sorted list.'],
+['After values.sort(), has the original list changed?',['Yes','No','Only its length'],0,'sort() changes the original list in place.'],
+['How many items are in sensors = ["IR", "touch"]?',['1','2','3'],1,'There are two values in the list.'],
+['Which statement is likely to cause an IndexError for items = ["a", "b"]?',['print(items[1])','print(items[0])','print(items[2])'],2,'Valid indexes are 0 and 1; index 2 does not exist.']
+];let quizScore=0,answered=0;function buildQuiz(){const root=document.getElementById('finalQuiz');root.innerHTML='';questions.forEach((q,qi)=>{let d=document.createElement('div');d.className='q';d.innerHTML=`<b>${qi+1}. ${q[0]}</b><div class="opts">${q[1].map((v,i)=>`<button>${String.fromCharCode(65+i)}. ${v}</button>`).join('')}</div><div class="feedback"></div>`;let bs=[...d.querySelectorAll('button')];bs.forEach((b,i)=>b.onclick=()=>{if(bs.some(x=>x.disabled))return;answered++;let ok=i===q[2];if(ok)quizScore++;bs.forEach((x,j)=>{x.disabled=true;if(j===q[2])x.classList.add('correct')});if(!ok)b.classList.add('incorrect');d.querySelector('.feedback').textContent=(ok?'Correct! ':'Review: ')+q[3];d.querySelector('.feedback').style.color=ok?'var(--green)':'var(--red)';document.getElementById('finalScore').textContent=`Score: ${quizScore} / ${questions.length}`;document.getElementById('gradeMsg').textContent=answered===questions.length?(quizScore>=8?'Excellent work! You are ready to practise these skills in Thonny.':quizScore>=5?'Good effort. Revise the sections you found difficult and try again.':'Keep practising. Revisit the explanations and examples, then try again.'):`${answered} of ${questions.length} answered`;});root.appendChild(d)})}function resetQuiz(){quizScore=0;answered=0;document.getElementById('finalScore').textContent=`Score: 0 / ${questions.length}`;document.getElementById('gradeMsg').textContent='Answer all questions to see your result.';buildQuiz()}document.getElementById('finalScore').textContent=`Score: 0 / ${questions.length}`;buildQuiz();show(0);
+</script></body></html>
